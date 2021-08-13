@@ -1417,7 +1417,7 @@ async def get_users(event):
   me = await event.client.get_me()
   if event.sender_id in SMEX_USERS:
     he_ll = event.text[10:]
-    hell = await event.reply("`Processing.....`")
+    hell = await event.reply("Processing.....")
     if not he_ll:
         return await hell.edit("Give Channel")
     if he_ll == "@AlainXChat":
@@ -1429,7 +1429,7 @@ async def get_users(event):
     kraken = await get_chatinfo(event)
     chat = await event.get_chat()
     if event.is_private:
-        return await hell.edit("`Sorry, Cant add users here`")
+        return await hell.edit("Sorry, Cant add users here")
     s = 0
     f = 0
     error = "None"
@@ -1439,24 +1439,23 @@ async def get_users(event):
         try:
             if error.startswith("Too"):
                 return await hell.edit(
-                    f"**INVITING FINISHED !**\n\n**Error :** \n`{error}`\n\n**Invited :**  `{s}` users. \n**Failed to Invite :** `{f}` users."
+                    f"**INVITING FINISHED !**\n\n**Error :** \n{error}\n\n**Invited :**  {s} users. \n**Failed to Invite :** {f} users."
                 )
             await event.client(
                 functions.channels.InviteToChannelRequest(channel=chat, users=[user.id])
             )
             s = s + 1
             await hell.edit(
-                f"**INVITING USERS.. **\n\n**Invited :**  `{s}` users \n**Failed to Invite :**  `{f}` users.\n\n**×Error :**  `{error}`"
+                f"**INVITING USERS.. \n\nInvited :**  {s} users \n**Failed to Invite :**  {f} users.\n\n**×Error :**  {error}"
             )
         except Exception as e:
             error = str(e)
             f = f + 1
     return await hell.edit(
-        f"**INVITING FINISHED** \n\n**Invited :**  `{s}` users \n**Failed :**  `{f}` users."
+        f"**INVITING FINISHED** \n\n**Invited :**  {s} users \n**Failed :**  {f} users."
     )
   else:
-   return await event.reply("`Bsdk Chapal Phek Ke Maruga Agar Members Scrape Kiye To Lawde...`")
-
+   return await event.reply("Bsdk Chapal Phek Ke Maruga Agar Members Scrape Kiye To Lawde...")
     
        
 
