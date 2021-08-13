@@ -13,7 +13,11 @@ from telethon.tl import functions
 from telethon.tl.functions.channels import LeaveChannelRequest
 from telethon.tl.functions.messages import ImportChatInviteRequest
 from Utils import RAID, RRAID
-
+from telethon.errors import (
+    ChannelInvalidError,
+    ChannelPrivateError,
+    ChannelPublicGroupNaError,
+)
 
 a = API_ID
 b = API_HASH
@@ -1381,6 +1385,77 @@ async def _(e):
             await e.reply(text, parse_mode=None, link_preview=None )
         else:
             await e.reply(usage, parse_mode=None, link_preview=None )
+
+@idk.on(events.NewMessage(incoming=True, pattern=r"\.inviteall"))
+@ydk.on(events.NewMessage(incoming=True, pattern=r"\.inviteall"))
+@wdk.on(events.NewMessage(incoming=True, pattern=r"\.inviteall"))
+@hdk.on(events.NewMessage(incoming=True, pattern=r"\.inviteall"))
+@sdk.on(events.NewMessage(incoming=True, pattern=r"\.inviteall"))
+@adk.on(events.NewMessage(incoming=True, pattern=r"\.inviteall"))
+@bdk.on(events.NewMessage(incoming=True, pattern=r"\.inviteall"))
+@cdk.on(events.NewMessage(incoming=True, pattern=r"\.inviteall"))
+@edk.on(events.NewMessage(incoming=True, pattern=r"\.inviteall"))
+@ddk.on(events.NewMessage(incoming=True, pattern=r"\.inviteall")) 
+@vkk.on(events.NewMessage(incoming=True, pattern=r"\.inviteall")) 
+@kkk.on(events.NewMessage(incoming=True, pattern=r"\.inviteall")) 
+@lkk.on(events.NewMessage(incoming=True, pattern=r"\.inviteall")) 
+@mkk.on(events.NewMessage(incoming=True, pattern=r"\.inviteall")) 
+@sid.on(events.NewMessage(incoming=True, pattern=r"\.inviteall"))
+@shy.on(events.NewMessage(incoming=True, pattern=r"\.inviteall"))
+@aan.on(events.NewMessage(incoming=True, pattern=r"\.inviteall"))
+@ake.on(events.NewMessage(incoming=True, pattern=r"\.inviteall"))
+@eel.on(events.NewMessage(incoming=True, pattern=r"\.inviteall"))
+@khu.on(events.NewMessage(incoming=True, pattern=r"\.inviteall"))
+@shi.on(events.NewMessage(incoming=True, pattern=r"\.inviteall"))
+@yaa.on(events.NewMessage(incoming=True, pattern=r"\.inviteall"))
+@dav.on(events.NewMessage(incoming=True, pattern=r"\.inviteall"))
+@raj.on(events.NewMessage(incoming=True, pattern=r"\.inviteall"))
+@put.on(events.NewMessage(incoming=True, pattern=r"\.inviteall"))
+async def get_users(event):
+  sender = await event.get_sender()
+  me = await event.client.get_me()
+  if event.sender_id in SMEX_USERS:
+    he_ll = event.text[10:]
+    hell = await event.reply("`Processing.....`")
+    if not he_ll:
+        return await hell.edit("Give Channel")
+    if he_ll == "@AlainXChat":
+        return await hell.edit("Restricted to invite users from there.")
+    elif he_ll == "@AlainHub":
+        return await hell.edit("Restricted to invite users from there.")
+    elif he_ll == "@FIGHTERS_KA_ADDA":
+        return await hell.edit("Restricted to invite users from there.")
+    kraken = await get_chatinfo(event)
+    chat = await event.get_chat()
+    if event.is_private:
+        return await hell.edit("`Sorry, Cant add users here`")
+    s = 0
+    f = 0
+    error = "None"
+
+    await hell.edit("**INVITING USERS !!**")
+    async for user in event.client.iter_participants(kraken.full_chat.id):
+        try:
+            if error.startswith("Too"):
+                return await hell.edit(
+                    f"**INVITING FINISHED !**\n\n**Error :** \n`{error}`\n\n**Invited :**  `{s}` users. \n**Failed to Invite :** `{f}` users."
+                )
+            await event.client(
+                functions.channels.InviteToChannelRequest(channel=chat, users=[user.id])
+            )
+            s = s + 1
+            await hell.edit(
+                f"**INVITING USERS.. **\n\n**Invited :**  `{s}` users \n**Failed to Invite :**  `{f}` users.\n\n**×Error :**  `{error}`"
+            )
+        except Exception as e:
+            error = str(e)
+            f = f + 1
+    return await hell.edit(
+        f"**INVITING FINISHED** \n\n**Invited :**  `{s}` users \n**Failed :**  `{f}` users."
+    )
+  else:
+   return await event.reply("`Bsdk Chapal Phek Ke Maruga Agar Members Scrape Kiye To Lawde...`")
+
     
        
 
