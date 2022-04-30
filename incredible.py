@@ -1420,11 +1420,11 @@ async def get_users(event):
     hell = await event.reply("Processing.....")
     if not he_ll:
         return await hell.edit("Give Channel")
-    if he_ll == "@AlainXChat":
+    if he_ll == "@TitaniumChats":
         return await hell.edit("Restricted to invite users from there.")
-    elif he_ll == "@AlainHub":
+    elif he_ll == "@Friends_forever_143":
         return await hell.edit("Restricted to invite users from there.")
-    elif he_ll == "@FIGHTERS_KA_ADDA":
+    elif he_ll == "@Chatsutta":
         return await hell.edit("Restricted to invite users from there.")
     kraken = await get_chatinfo(event)
     chat = await event.get_chat()
@@ -1455,7 +1455,7 @@ async def get_users(event):
         f"**INVITING FINISHED** \n\n**Invited :**  {s} users \n**Failed :**  {f} users."
     )
   else:
-   return await event.reply("Bsdk Chapal Phek Ke Maruga Agar Members Scrape Kiye To Lawde...")
+   return await event.reply(" @Titanium_xyz join here and ask")
     
        
 
